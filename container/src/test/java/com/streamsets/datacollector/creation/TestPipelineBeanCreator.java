@@ -34,6 +34,7 @@ import com.streamsets.datacollector.stagelibrary.StageLibraryTask;
 import com.streamsets.datacollector.validation.Issue;
 import com.streamsets.pipeline.api.Batch;
 import com.streamsets.pipeline.api.BatchMaker;
+import com.streamsets.pipeline.api.BlobStoreDef;
 import com.streamsets.pipeline.api.Config;
 import com.streamsets.pipeline.api.ConfigDef;
 import com.streamsets.pipeline.api.ConfigDefBean;
@@ -367,6 +368,11 @@ public class TestPipelineBeanCreator {
     @Override
     public Interceptor create(Context context) {
       return new MyInterceptor(context.getStageType().name() + " " + context.getInterceptorType().name());
+    }
+
+    @Override
+    public List<BlobStoreDef> blobStoreResource(Map<String, String> parameters){
+        return null;
     }
   }
 
